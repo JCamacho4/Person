@@ -28,7 +28,7 @@ public class Person {
             throw new BadArgumentsException("Not possible to create a negative aged person");
         }else if(gender.isEmpty() || gender.isBlank()){
             throw new BadArgumentsException("Not possible to create a person without gender");
-        }else if(!gender.equals("Male") || !gender.equals("Female")){
+        }else if(!gender.equals("Male") && !gender.equals("Female")){
             throw new BadArgumentsException("Not possible to create a person with a gender other tan 'Male' or 'Female'");
         }
 
