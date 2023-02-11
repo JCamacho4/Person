@@ -23,8 +23,13 @@ class PersonTest {
     }
 
     @Test
-    void notIdentifiedGenderPerson(){
+    void emptyGenderPerson(){
         assertThrows(BadArgumentsException.class, () -> person = new Person("Bob", 34, ""));
+    }
+
+    @Test
+    void notIdentifiedGenderPerson(){
+        assertThrows(BadArgumentsException.class, () -> person = new Person("Bob", 34, "Random"));
     }
 
 }
