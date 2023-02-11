@@ -1,8 +1,10 @@
 package es.uma.mps;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -43,5 +45,21 @@ class PersonTest {
         assertEquals(age,person.getAge());
         assertEquals(gender,person.getGender());
     }
+
+    @Test
+    public void averageAgeOn2MalesAnd3Females() {
+        List<Person> persons = new ArrayList<>();
+        persons.add(new Person("John", 25, "Male"));
+        persons.add(new Person("Michael", 30, "Male"));
+        persons.add(new Person("Jane", 28, "Female"));
+        persons.add(new Person("Emily", 26, "Female"));
+        persons.add(new Person("Sarah", 32, "Female"));
+
+        double[] result = person.averageAgePerGender(persons);
+
+        assertEquals(27.5, result[0], 0.1); // Male average age should be 27.5
+        assertEquals(28.6, result[1], 0.1); // Female average age should be 29
+    }
+
 
 }

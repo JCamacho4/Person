@@ -54,6 +54,8 @@ public class Person {
      * an array of two elements (the first element is the male mean age and the second one is the
      * female mean age)
      *
+     * I decided to change this method to static because it has no sense that a person call this method.
+     *
      * @param persons list of people to compute.
      * @return Array of two elements. res[0] = maleMeanAge and res[1] = femaleMeanAge
      */
