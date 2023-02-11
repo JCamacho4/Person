@@ -32,4 +32,16 @@ class PersonTest {
         assertThrows(BadArgumentsException.class, () -> person = new Person("Bob", 34, "Random"));
     }
 
+    @Test
+    void correctPersonCreation(){
+        String name = "Charles", gender = "Male";
+        int age =25;
+
+        person = new Person(name,age,gender);
+
+        assertEquals(name, person.getName());
+        assertEquals(age,person.getAge());
+        assertEquals(gender,person.getGender());
+    }
+
 }

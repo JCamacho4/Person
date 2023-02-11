@@ -2,12 +2,25 @@ package es.uma.mps;
 
 import java.util.List;
 
+/**
+ * Class representing a person with a name, age and gender.
+ *
+ * @author Jorge Camacho García
+ */
 public class Person {
 
     private final String name;
     private final int age;
     private final String gender; // Male, Female
 
+    /**
+     * Constructs a person with a name, age and gender.
+     * Age must be positive, and gender must be 'Male' or 'Female'
+     *
+     * @param name the name of the person. Can't be empty.
+     * @param age the age of the person. Must be greater or equal to 0.
+     * @param gender the gender of the person. Must be 'Male' or 'Female'.
+     */
     public Person(String name, int age, String gender) {
         if(name.isEmpty() || name.isBlank()){
             throw new BadArgumentsException("Not possible to create an unnamed person");
@@ -41,8 +54,8 @@ public class Person {
      * an array of two elements (the first element is the male mean age and the second one is the
      * female mean age)
      *
-     * @param persons
-     * @return
+     * @param persons list of people to compute.
+     * @return Array of two elements. res[0] = maleMeanAge and res[1] = femaleMeanAge
      */
     public double[] averageAgePerGender(List<Person> persons){
         double averageMaleAge = 0.0, averageFemaleAge = 0.0;
