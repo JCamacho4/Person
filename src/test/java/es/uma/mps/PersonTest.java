@@ -14,17 +14,17 @@ class PersonTest {
 
     @Test
     void unnamedPerson(){
-        assertThrows(RuntimeException.class, () -> person = new Person("",68,"Female"));
+        assertThrows(BadArgumentsException.class, () -> person = new Person("",68,"Female"));
     }
 
     @Test
     void negativeAgePerson(){
-        assertThrows(RuntimeException.class, () -> person = new Person("Alice",-20, "Female"));
+        assertThrows(BadArgumentsException.class, () -> person = new Person("Alice",-20, "Female"));
     }
 
     @Test
     void notIdentifiedGenderPerson(){
-        assertThrows(RuntimeException.class, () -> person = new Person("Bob", 34, ""));
+        assertThrows(BadArgumentsException.class, () -> person = new Person("Bob", 34, ""));
     }
 
 }

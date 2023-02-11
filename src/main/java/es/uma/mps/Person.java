@@ -10,13 +10,13 @@ public class Person {
 
     public Person(String name, int age, String gender) {
         if(name.isEmpty() || name.isBlank()){
-            throw new RuntimeException("Not possible to create an unnamed person");
+            throw new BadArgumentsException("Not possible to create an unnamed person");
         }else if(age < 0){
-            throw new RuntimeException("Not possible to create a negative aged person");
+            throw new BadArgumentsException("Not possible to create a negative aged person");
         }else if(gender.isEmpty() || gender.isBlank()){
-            throw new RuntimeException("Not possible to create a person without gender");
+            throw new BadArgumentsException("Not possible to create a person without gender");
         }else if(!gender.equals("Male") || !gender.equals("Female")){
-            throw new RuntimeException("Not possible to create a person with a gender other tan 'Male' or 'Female'");
+            throw new BadArgumentsException("Not possible to create a person with a gender other tan 'Male' or 'Female'");
         }
 
         this.name = name;
