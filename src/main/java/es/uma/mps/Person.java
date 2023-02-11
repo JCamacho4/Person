@@ -57,26 +57,31 @@ public class Person {
      * @param persons list of people to compute.
      * @return Array of two elements. res[0] = maleMeanAge and res[1] = femaleMeanAge
      */
-    public double[] averageAgePerGender(List<Person> persons){
+    public static double[] averageAgePerGender(List<Person> persons){
         double averageMaleAge = 0.0, averageFemaleAge = 0.0;
         int  maleCounter = 0, femaleCounter = 0, totalMaleAge = 0, totalFemaleAge = 0;
         double[] result = new double[2];
 
-        for (Person person : persons) {
-            if(person.getGender().equals("Male")){
-                maleCounter++;
-                totalMaleAge += person.getAge();
-            } else if(person.getGender().equals("Female")){ // Add robustness to the method
-                femaleCounter++;
-                totalFemaleAge += person.getAge();
+        if (persons == null) {
+            return new double[] {Double.NaN, Double.NaN};
+        }else{
+            for (Person person : persons) {
+                if(person.getGender().equals("Male")){
+                    maleCounter++;
+                    totalMaleAge += person.getAge();
+                } else if(person.getGender().equals("Female")){ // Add robustness to the method
+                    femaleCounter++;
+                    totalFemaleAge += person.getAge();
+                }
             }
+
+            averageMaleAge = (maleCounter>0)?((double) totalMaleAge / maleCounter):Double.NaN;
+            averageFemaleAge = (femaleCounter>0)?((double) totalFemaleAge / femaleCounter):Double.NaN;
+
+            result[0] = averageMaleAge;
+            result[1] = averageFemaleAge;
         }
 
-        averageMaleAge = (maleCounter>0)?((double) totalMaleAge / maleCounter):Double.NaN;
-        averageFemaleAge = (femaleCounter>0)?((double) totalFemaleAge / femaleCounter):Double.NaN;
-
-        result[0] = averageMaleAge;
-        result[1] = averageFemaleAge;
 
         return result;
     }
