@@ -18,15 +18,17 @@ class PersonTest {
     Person person;
 
     @AfterEach
-    void shutdown(){ person = null;}
+    void shutdown() {
+        person = null;
+    }
 
     /**
      * Test to verify the handling of an empty name in the Person class.
      * Expects a BadArgumentsException to be thrown when a Person is created with an empty name.
      */
     @Test
-    void unnamedPerson(){
-        assertThrows(BadArgumentsException.class, () -> person = new Person("",68,"Female"));
+    void unnamedPerson() {
+        assertThrows(BadArgumentsException.class, () -> person = new Person("", 68, "Female"));
     }
 
     /**
@@ -34,8 +36,8 @@ class PersonTest {
      * Expects a BadArgumentsException to be thrown when a Person is created with negative age.
      */
     @Test
-    void negativeAgePerson(){
-        assertThrows(BadArgumentsException.class, () -> person = new Person("Alice",-20, "Female"));
+    void negativeAgePerson() {
+        assertThrows(BadArgumentsException.class, () -> person = new Person("Alice", -20, "Female"));
     }
 
     /**
@@ -43,7 +45,7 @@ class PersonTest {
      * Expects a BadArgumentsException to be thrown when a Person is created with an empty gender.
      */
     @Test
-    void emptyGenderPerson(){
+    void emptyGenderPerson() {
         assertThrows(BadArgumentsException.class, () -> person = new Person("Bob", 34, ""));
     }
 
@@ -53,7 +55,7 @@ class PersonTest {
      * Expects a BadArgumentsException to be thrown when a Person is created with an undefined gender.
      */
     @Test
-    void notIdentifiedGenderPerson(){
+    void notIdentifiedGenderPerson() {
         assertThrows(BadArgumentsException.class, () -> person = new Person("Bob", 34, "Random"));
     }
 
@@ -62,15 +64,15 @@ class PersonTest {
      * Expects the created Person object to have the same name, age, and gender as the input parameters.
      */
     @Test
-    void correctPersonCreation(){
+    void correctPersonCreation() {
         String name = "Charles", gender = "Male";
-        int age =25;
+        int age = 25;
 
-        person = new Person(name,age,gender);
+        person = new Person(name, age, gender);
 
         assertEquals(name, person.getName());
-        assertEquals(age,person.getAge());
-        assertEquals(gender,person.getGender());
+        assertEquals(age, person.getAge());
+        assertEquals(gender, person.getGender());
     }
 
     /**
@@ -78,7 +80,7 @@ class PersonTest {
      * Expects the result to be NaN for both Male and Female averages.
      */
     @Test
-    public void averageAgeOnEmptyList(){
+    public void averageAgeOnEmptyList() {
         double[] result = Person.averageAgePerGender(new ArrayList<Person>());
 
         assertEquals(Double.NaN, result[0]);
@@ -90,7 +92,7 @@ class PersonTest {
      * Expects the result to be NaN for both Male and Female averages.
      */
     @Test
-    public void averageOnNullList(){
+    public void averageOnNullList() {
         double[] result = Person.averageAgePerGender(null);
 
         assertEquals(Double.NaN, result[0]);
@@ -122,7 +124,7 @@ class PersonTest {
      * Expects the Male average to be 46 and the Female average to be NaN.
      */
     @Test
-    public void averageAgeOn3MalesAnd0Females(){
+    public void averageAgeOn3MalesAnd0Females() {
         List<Person> persons = new ArrayList<>();
         persons.add(new Person("John", 42, "Male"));
         persons.add(new Person("Michael", 80, "Male"));
@@ -140,7 +142,7 @@ class PersonTest {
      * Expects the Male average to be 31 and the Female average to be 57.
      */
     @Test
-    public void averageAgeOn1MaleAnd1Female(){
+    public void averageAgeOn1MaleAnd1Female() {
         List<Person> persons = new ArrayList<>();
         persons.add(new Person("Lucas", 31, "Male"));
         persons.add(new Person("Michelle", 57, "Female"));
@@ -156,7 +158,7 @@ class PersonTest {
      * Expects the Male average to be 21 and the Female average to be 43.5.
      */
     @Test
-    public void averageAgeOn1MaleAnd4Females(){
+    public void averageAgeOn1MaleAnd4Females() {
         List<Person> persons = new ArrayList<>();
         persons.add(new Person("Bob", 21, "Male"));
         persons.add(new Person("Michael", 54, "Female"));
