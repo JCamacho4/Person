@@ -74,6 +74,30 @@ class PersonTest {
     }
 
     /**
+     * Test to verify the calculation of average age per gender in an empty list of Person objects.
+     * Expects the result to be NaN for both Male and Female averages.
+     */
+    @Test
+    public void averageAgeOnEmptyList(){
+        double[] result = Person.averageAgePerGender(new ArrayList<Person>());
+
+        assertEquals(Double.NaN, result[0]);
+        assertEquals(Double.NaN, result[1]);
+    }
+
+    /**
+     * Test to verify the calculation of average age per gender in a null element.
+     * Expects the result to be NaN for both Male and Female averages.
+     */
+    @Test
+    public void averageOnNullList(){
+        double[] result = Person.averageAgePerGender(null);
+
+        assertEquals(Double.NaN, result[0]);
+        assertEquals(Double.NaN, result[1]);
+    }
+
+    /**
      * Test to verify the calculation of average age per gender in a list of Person objects, with 2 males and 3 females.
      * Expects the Male average to be 27.5 and the Female average to be 28.6.
      */
@@ -90,18 +114,6 @@ class PersonTest {
 
         assertEquals(27.5, result[0], 0.1);
         assertEquals(28.6, result[1], 0.1);
-    }
-
-    /**
-     * Test to verify the calculation of average age per gender in an empty list of Person objects.
-     * Expects the result to be NaN for both Male and Female averages.
-     */
-    @Test
-    public void averageAgeOnEmptyList(){
-        double[] result = Person.averageAgePerGender(new ArrayList<Person>());
-
-        assertEquals(Double.NaN, result[0]);
-        assertEquals(Double.NaN, result[1]);
     }
 
     /**

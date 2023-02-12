@@ -62,7 +62,7 @@ public class Person {
     public static double[] averageAgePerGender(List<Person> persons){
         double averageMaleAge = 0.0, averageFemaleAge = 0.0;
         int  maleCounter = 0, femaleCounter = 0, totalMaleAge = 0, totalFemaleAge = 0;
-        double[] result = new double[2];
+
 
         if (persons == null) {
             return new double[] {Double.NaN, Double.NaN};
@@ -71,7 +71,7 @@ public class Person {
                 if(person.getGender().equals("Male")){
                     maleCounter++;
                     totalMaleAge += person.getAge();
-                } else if(person.getGender().equals("Female")){ // Add robustness to the method
+                } else if(person.getGender().equals("Female")){ // Add robustness to the method in case we add more genders
                     femaleCounter++;
                     totalFemaleAge += person.getAge();
                 }
@@ -80,11 +80,7 @@ public class Person {
             averageMaleAge = (maleCounter>0)?((double) totalMaleAge / maleCounter):Double.NaN;
             averageFemaleAge = (femaleCounter>0)?((double) totalFemaleAge / femaleCounter):Double.NaN;
 
-            result[0] = averageMaleAge;
-            result[1] = averageFemaleAge;
+            return new double[] {averageMaleAge, averageFemaleAge};
         }
-
-
-        return result;
     }
 }
