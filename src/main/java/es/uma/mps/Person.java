@@ -22,11 +22,11 @@ public class Person {
      * @param gender the gender of the person. Must be 'Male' or 'Female'.
      */
     public Person(String name, int age, String gender) {
-        if(name.isEmpty() || name.isBlank()){
+        if(name.isEmpty()){
             throw new BadArgumentsException("Not possible to create an unnamed person");
         }else if(age < 0){
             throw new BadArgumentsException("Not possible to create a negative aged person");
-        }else if(gender.isEmpty() || gender.isBlank()){
+        }else if(gender.isEmpty()){
             throw new BadArgumentsException("Not possible to create a person without gender");
         }else if(!gender.equals("Male") && !gender.equals("Female")){
             throw new BadArgumentsException("Not possible to create a person with a gender other tan 'Male' or 'Female'");
