@@ -88,8 +88,8 @@ class PersonTest {
 
         double[] result = Person.averageAgePerGender(persons);
 
-        assertEquals(27.5, result[0], 0.1); // Male average age should be 27.5
-        assertEquals(28.6, result[1], 0.1); // Female average age should be 29
+        assertEquals(27.5, result[0], 0.1);
+        assertEquals(28.6, result[1], 0.1);
     }
 
     /**
@@ -154,7 +154,7 @@ class PersonTest {
 
         double[] result = Person.averageAgePerGender(persons);
 
-        assertEquals(21, result[0]); // Male average age should be 27.5
-        assertEquals(43.5, result[1], 0.1); // Female average age should be 29
+        assertEquals(21, result[0]);
+        assertEquals(43.5, result[1], 0.1);
     }
 }
