@@ -71,7 +71,7 @@ public class Person {
                 if(person.getGender().equals("Male")){
                     maleCounter++;
                     totalMaleAge += person.getAge();
-                } else if(person.getGender().equals("Female")){ // Add robustness to the method in case we add more genders
+                } else {
                     femaleCounter++;
                     totalFemaleAge += person.getAge();
                 }
