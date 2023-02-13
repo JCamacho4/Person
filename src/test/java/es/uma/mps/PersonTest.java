@@ -100,27 +100,23 @@ class PersonTest {
     }
 
     /**
-     * Test to verify the calculation of average age per gender in a list of Person objects, with 2 males and 3 females.
-     * Expects the Male average to be 27.5 and the Female average to be 28.6.
+     * Test to verify the calculation of average age per gender in a list of Person objects containing 1 Male and 1 Female.
+     * Expects the Male average to be 31 and the Female average to be 57.
      */
     @Test
-    public void averageAgeOn2MalesAnd3Females() {
+    public void averageAgeOn1MaleAnd1Female() {
         List<Person> persons = new ArrayList<>();
-        persons.add(new Person("John", 25, "Male"));
-        persons.add(new Person("Michael", 30, "Male"));
-        persons.add(new Person("Jane", 28, "Female"));
-        persons.add(new Person("Emily", 26, "Female"));
-        persons.add(new Person("Sarah", 32, "Female"));
+        persons.add(new Person("Lucas", 31, "Male"));
+        persons.add(new Person("Michelle", 57, "Female"));
 
         double[] result = Person.averageAgePerGender(persons);
 
-        assertEquals(27.5, result[0], 0.1);
-        assertEquals(28.6, result[1], 0.1);
+        assertEquals(31, result[0]);
+        assertEquals(57, result[1]);
     }
 
     /**
-     * Test to verify the calculation of average age per gender in a
-     * list of Person objects containing 3 males and 0 females.
+     * Test to verify the calculation of average age per gender in a list of Person objects containing 3 males and 0 females.
      * Expects the Male average to be 46 and the Female average to be NaN.
      */
     @Test
@@ -137,20 +133,20 @@ class PersonTest {
     }
 
     /**
-     * Test to verify the calculation of average age per gender in a list
-     * of Person objects containing 1 Male and 1 Female.
-     * Expects the Male average to be 31 and the Female average to be 57.
+     * Test to verify the calculation of average age per gender in a list of Person objects containing 0 males and 3 females.
+     * Expects the Male average to be NaN and the Female average to be 30.
      */
     @Test
-    public void averageAgeOn1MaleAnd1Female() {
+    void averageAgeOn0MalesAnd3Females() {
         List<Person> persons = new ArrayList<>();
-        persons.add(new Person("Lucas", 31, "Male"));
-        persons.add(new Person("Michelle", 57, "Female"));
+        persons.add(new Person("Jane", 25, "Female"));
+        persons.add(new Person("Emma", 30, "Female"));
+        persons.add(new Person("Lena", 35, "Female"));
 
-        double[] result = Person.averageAgePerGender(persons);
+        double[] averageAge = Person.averageAgePerGender(persons);
 
-        assertEquals(31, result[0]);
-        assertEquals(57, result[1]);
+        assertEquals(Double.NaN, averageAge[0]);
+        assertEquals(30.0, averageAge[1], 0.01);
     }
 
     /**
@@ -170,5 +166,62 @@ class PersonTest {
 
         assertEquals(21, result[0]);
         assertEquals(43.5, result[1], 0.1);
+    }
+
+    /**
+     * Test to verify the calculation of average age per gender in a list of Person objects containing 2 males and 2 females.
+     * Expects the Male average to be 27.5 and the Female average to be 42.5.
+     */
+    @Test
+    void averageAgeOn2MalesAnd2Females() {
+        List<Person> persons = new ArrayList<>();
+        persons.add(new Person("John", 25, "Male"));
+        persons.add(new Person("James", 30, "Male"));
+        persons.add(new Person("Jane", 40, "Female"));
+        persons.add(new Person("Emma", 45, "Female"));
+
+        double[] averageAge = Person.averageAgePerGender(persons);
+
+        assertEquals(27.5, averageAge[0], 0.01);
+        assertEquals(42.5, averageAge[1], 0.01);
+    }
+
+    /**
+     * Test to verify the calculation of average age per gender in a list of Person objects, with 2 males and 3 females.
+     * Expects the Male average to be 27.5 and the Female average to be 28.6.
+     */
+    @Test
+    public void averageAgeOn2MalesAnd3Females() {
+        List<Person> persons = new ArrayList<>();
+        persons.add(new Person("John", 25, "Male"));
+        persons.add(new Person("Michael", 30, "Male"));
+        persons.add(new Person("Jane", 28, "Female"));
+        persons.add(new Person("Emily", 26, "Female"));
+        persons.add(new Person("Sarah", 32, "Female"));
+
+        double[] result = Person.averageAgePerGender(persons);
+
+        assertEquals(27.5, result[0], 0.1);
+        assertEquals(28.6, result[1], 0.1);
+    }
+
+    /**
+     * Test to verify the calculation of average age per gender in a list of Person objects containing 3 males and 3 females.
+     * Expects the Male average to be 30 and the Female average to be 45.
+     */
+    @Test
+    void averageAgeOn3MalesAnd3Females() {
+        List<Person> persons = new ArrayList<>();
+        persons.add(new Person("John", 25, "Male"));
+        persons.add(new Person("James", 30, "Male"));
+        persons.add(new Person("Jack", 35, "Male"));
+        persons.add(new Person("Jane", 40, "Female"));
+        persons.add(new Person("Emma", 45, "Female"));
+        persons.add(new Person("Lena", 50, "Female"));
+
+        double[] averageAge = Person.averageAgePerGender(persons);
+
+        assertEquals(30.0, averageAge[0], 0.01);
+        assertEquals(45.0, averageAge[1], 0.01);
     }
 }
